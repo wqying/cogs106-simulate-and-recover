@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from src.simulate import simulate_data
+from src.model.simulate import simulate_data
 
 
 class TestSimulation(unittest.TestCase):

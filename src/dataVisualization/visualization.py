@@ -48,7 +48,7 @@ def plot_bias(data):
     plt.grid()
     plt.show(block=True)
 
-    plt.savefig("bias_plot.png")
+    plt.savefig("./output/bias_plot.png")
 
 def plot_squared_error_trend(data):
     """
@@ -75,10 +75,10 @@ def plot_squared_error_trend(data):
     plt.grid()
     plt.show(block=True)
 
-    plt.savefig("squared_error_plot.png")
+    plt.savefig("./output/squared_error_plot.png")
 
 if __name__ == "__main__":
-    filename = "results.csv"
+    filename = "./data/results.csv"
     data = load_results(filename)
 
     plot_bias(data)
