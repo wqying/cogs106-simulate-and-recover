@@ -1,16 +1,19 @@
 import unittest
 import numpy as np
 from src.recover import recover_parameters
+from src.simulate import simulate_data  # Importing correct simulation function
 
 
 class TestRecover(unittest.TestCase):
     def test_recovery_accuracy(self):
-        """Test if recovered parameters are reasonably close to simulated ones."""
-        alpha_true, nu_true, tau_true = 1.2, 1.5, 0.3  # True parameters
-        R_obs, M_obs, V_obs = 0.75, 0.5, 0.02  # Simulated observed values
+        """
+        Test if recovered parameters are reasonably close to simulated ones.
+        """
+        N = 500  # Moderate N for stable recovery
+        alpha_true, nu_true, tau_true, R_obs, M_obs, V_obs = simulate_data(N)  # Simulate observed data
 
         recovered_params = recover_parameters(R_obs, M_obs, V_obs)
-        self.assertIsNotNone(recovered_params)  # Ensure recovery returns a valid result
+        self.assertIsNotNone(recovered_params)  # Ensure function returns a result
         alpha_est, nu_est, tau_est = recovered_params
 
         # Check if recovered values are close to the originals
