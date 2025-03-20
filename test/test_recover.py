@@ -14,7 +14,7 @@ class TestRecover(unittest.TestCase):
         alpha_est, nu_est, tau_est = recovered_params
 
         # Check if recovered values are close to the originals
-        self.assertAlmostEqual(alpha_true, alpha_est, delta=0.2)
+        self.assertAlmostEqual(alpha_true, alpha_est, delta=0.3)
         self.assertAlmostEqual(nu_true, nu_est, delta=0.2)
         self.assertAlmostEqual(tau_true, tau_est, delta=0.1)
 

@@ -14,4 +14,4 @@ The EZ Diffusion Model is a cognitive model that allows us to compute estimated 
 ## Conclusion ##
 
 ### Acknowledgements ###
-ChatGPT was used to help with planning and structuring code, as well as writing some unit tests. Professor Vandekerckhove's slides were also referenced, mainly for equations and coding practices.
+ChatGPT was used to help with structuring code and debugging, as well as writing some unit tests. Professor Vandekerckhove's slides were also referenced, mainly for equations.

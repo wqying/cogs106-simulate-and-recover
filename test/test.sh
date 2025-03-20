@@ -1,8 +1,9 @@
 #!/bin/bash
 
 echo "Running all tests..."
-python3 -m unittest test/test_simulate.py
-python3 -m unittest test/test_recover.py
+
+# Run tests explicitly by path
+python3 -m unittest discover -s test -p "*.py"
 
 if [ $? -eq 0 ]; then
     echo "All tests passed successfully!"
