@@ -1,5 +1,7 @@
 import csv
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 def load_results(filename):
     """
@@ -22,37 +24,53 @@ def load_results(filename):
     return data
 
 def plot_bias(data):
-    """Plots bias trends for alpha, nu, and tau."""
+    """
+    Plots bias trends for alpha, nu, and tau.
+    """
     plt.figure(figsize=(8, 5))
-    plt.scatter(data["N"], data["bias_alpha"], alpha=0.5, label="Bias α (Boundary Separation)")
-    plt.scatter(data["N"], data["bias_nu"], alpha=0.5, label="Bias ν (Drift Rate)")
-    plt.scatter(data["N"], data["bias_tau"], alpha=0.5, label="Bias τ (Non-decision Time)")
+
+    unique_N = sorted(set(data["N"]))
+    mean_bias_alpha = [np.mean([data["bias_alpha"][i] for i in range(len(data["N"])) if data["N"][i] == N]) for N in unique_N]
+    mean_bias_nu = [np.mean([data["bias_nu"][i] for i in range(len(data["N"])) if data["N"][i] == N]) for N in unique_N]
+    mean_bias_tau = [np.mean([data["bias_tau"][i] for i in range(len(data["N"])) if data["N"][i] == N]) for N in unique_N]
+
+    # Plot mean bias trend
+    plt.plot(unique_N, mean_bias_alpha, marker='o', linestyle='-', label="Mean Bias α (Boundary Separation)")
+    plt.plot(unique_N, mean_bias_nu, marker='o', linestyle='-', label="Mean Bias ν (Drift Rate)")
+    plt.plot(unique_N, mean_bias_tau, marker='o', linestyle='-', label="Mean Bias τ (Non-decision Time)")
 
     plt.xscale("log")
     plt.axhline(0, color="black", linestyle="--", linewidth=1)  # Expected bias = 0 line
     plt.xlabel("Sample Size (N)")
-    plt.ylabel("Bias")
-    plt.title("Bias of Recovered Parameters")
+    plt.ylabel("Mean Bias")
+    plt.title("Trend of Mean Bias as N Increases")
     plt.legend()
     plt.grid()
     plt.show(block=True)
 
     plt.savefig("bias_plot.png")
 
-def plot_squared_error(data):
+def plot_squared_error_trend(data):
     """
-    Plots squared error trends for alpha, nu, and tau.
+    Plots the mean squared error trend as N increases.
     """
     plt.figure(figsize=(8, 5))
-    plt.scatter(data["N"], data["sq_error_alpha"], alpha=0.5, label="Squared Error α (Boundary Separation)")
-    plt.scatter(data["N"], data["sq_error_nu"], alpha=0.5, label="Squared Error ν (Drift Rate)")
-    plt.scatter(data["N"], data["sq_error_tau"], alpha=0.5, label="Squared Error τ (Non-decision Time)")
+
+    unique_N = sorted(set(data["N"]))
+    mean_sq_error_alpha = [np.mean([data["sq_error_alpha"][i] for i in range(len(data["N"])) if data["N"][i] == N]) for N in unique_N]
+    mean_sq_error_nu = [np.mean([data["sq_error_nu"][i] for i in range(len(data["N"])) if data["N"][i] == N]) for N in unique_N]
+    mean_sq_error_tau = [np.mean([data["sq_error_tau"][i] for i in range(len(data["N"])) if data["N"][i] == N]) for N in unique_N]
+
+    # Plot mean squared error trend
+    plt.plot(unique_N, mean_sq_error_alpha, marker='o', linestyle='-', label="Mean Squared Error α (Boundary Separation)")
+    plt.plot(unique_N, mean_sq_error_nu, marker='o', linestyle='-', label="Mean Squared Error ν (Drift Rate)")
+    plt.plot(unique_N, mean_sq_error_tau, marker='o', linestyle='-', label="Mean Squared Error τ (Non-decision Time)")
 
     plt.xscale("log")
     plt.yscale("log")  # Squared error should decrease logarithmically
     plt.xlabel("Sample Size (N)")
-    plt.ylabel("Squared Error")
-    plt.title("Squared Error of Recovered Parameters")
+    plt.ylabel("Mean Squared Error")
+    plt.title("Trend of Mean Squared Error as N Increases")
     plt.legend()
     plt.grid()
     plt.show(block=True)
@@ -64,4 +82,4 @@ if __name__ == "__main__":
     data = load_results(filename)
 
     plot_bias(data)
-    plot_squared_error(data)
+    plot_squared_error_trend(data)
