@@ -4,7 +4,9 @@ from src.simulate import simulate_data
 from src.recover import recover_parameters
 
 def run_simulation(iterations=1000):
-    """Runs the simulate-and-recover experiment for N = 10, 40, 4000 without using pandas."""
+    """
+    Runs the simulate-and-recover experiment for N = 10, 40, 4000.
+    """
     
     N_values = [10, 40, 4000]  # Sample sizes
     results_file = "results/results.csv"
@@ -38,7 +40,7 @@ def run_simulation(iterations=1000):
 
                     # Write to CSV
                     writer.writerow([N, bias_alpha, bias_nu, bias_tau, squared_error_alpha, squared_error_nu, squared_error_tau])
-                    
+
 
 if __name__ == "__main__":
     run_simulation(iterations=1000)
