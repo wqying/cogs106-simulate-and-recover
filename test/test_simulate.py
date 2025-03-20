@@ -8,3 +8,6 @@ class TestSimulation(unittest.TestCase):
         R_obs, M_obs, V_obs = simulate_data(N, alpha, nu, tau)
         self.assertGreater(R_obs, 0)
         self.assertLess(R_obs, 1)
+
+if __name__ == "__main__":
+    unittest.main()
