@@ -7,7 +7,7 @@ statistics.
 import numpy as np
 
 
-def simulate_data(N, alpha, nu, tau):
+def simulate_data(N):
     """
     Simulates data based on the diffusion model.
     """
@@ -26,4 +26,4 @@ def simulate_data(N, alpha, nu, tau):
     M_obs = np.random.normal(M_pred, np.sqrt(V_pred / N))
     V_obs = np.random.gamma((N - 1) / 2, (2 * V_pred) / (N - 1))
 
-    return R_obs, M_obs, V_obs
+    return alpha, nu, tau, R_obs, M_obs, V_obs

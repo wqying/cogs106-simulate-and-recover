@@ -25,7 +25,7 @@ class TestRecover(unittest.TestCase):
         """Test recovery function behavior when given extreme R_obs values (0 or 1)."""
         self.assertIsNone(recover_parameters(0, 0.5, 0.02))
         self.assertIsNone(recover_parameters(1, 0.5, 0.02))
-
+        
 
 if __name__ == "__main__":
     unittest.main()
