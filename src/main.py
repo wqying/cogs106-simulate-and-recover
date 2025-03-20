@@ -1,7 +1,8 @@
 import csv
 import numpy as np
-from src.simulate import simulate_data
-from src.recover import recover_parameters
+from src.model.simulate import simulate_data
+from src.model.recover import recover_parameters
+
 
 def run_simulation(iterations=1000):
     """
@@ -9,7 +10,7 @@ def run_simulation(iterations=1000):
     """
     
     N_values = [10, 40, 4000]  # Sample sizes
-    results_file = "results/results.csv"
+    results_file = "data/results.csv"
 
     # Open file for writing results
     with open(results_file, mode="w", newline="") as file:
@@ -40,6 +41,7 @@ def run_simulation(iterations=1000):
 
                     # Write to CSV
                     writer.writerow([N, bias_alpha, bias_nu, bias_tau, squared_error_alpha, squared_error_nu, squared_error_tau])
+
 
 
 if __name__ == "__main__":
