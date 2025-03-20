@@ -1,3 +1,9 @@
+"""
+This script contains the function "simulate_data" that will randomly generate
+parameters alpha, nu, tau, compute predicted summary statistics, and simulate observed
+statistics.
+"""
+
 import numpy as np
 
 

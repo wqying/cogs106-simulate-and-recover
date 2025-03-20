@@ -1,3 +1,9 @@
+"""
+This script contains the function "recover_parameters" that will estimate parameters
+alpha, nu, tau from simulated observed statistics and compute bias and squared error.
+"""
+
+
 import numpy as np
 
 
