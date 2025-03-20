@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Running all tests..."
-pytest test/test_simulate.py
-pytest test/test_recover.py
+python3 -m unittest test/test_simulate.py
+python3 -m unittest test/test_recover.py
 
 if [ $? -eq 0 ]; then
     echo "All tests passed successfully!"
