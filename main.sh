@@ -8,4 +8,4 @@ PYTHONPATH=$(pwd) python3 src/main.py
 echo "Generating plots..."
 PYTHONPATH=$(pwd) python3 src/dataVisualization/visualization.py
 
-echo "Simulation and visualization completed! Check output folder,"
+echo "Simulation and visualization completed! Check output folder."
