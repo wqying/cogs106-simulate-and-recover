@@ -11,6 +11,11 @@ def simulate_data(N, alpha, nu, tau):
     """
     Simulates data based on the diffusion model.
     """
+    # Random value generation
+    alpha = np.random.uniform(0.5, 2)
+    nu = np.random.uniform(0.5, 2)
+    tau = np.random.uniform(0.1, 0.5)
+
     y = np.exp(-alpha * nu)
     R_pred = 1 / (y + 1)
     M_pred = tau + (alpha / (2 ** nu)) * ((1 - y) / (1 + y))
