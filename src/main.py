@@ -38,8 +38,7 @@ def run_simulation(iterations=1000):
 
                     # Write to CSV
                     writer.writerow([N, bias_alpha, bias_nu, bias_tau, squared_error_alpha, squared_error_nu, squared_error_tau])
-
-    print(f"Simulation completed! Results saved in {results_file}.")
+                    
 
 if __name__ == "__main__":
     run_simulation(iterations=1000)
